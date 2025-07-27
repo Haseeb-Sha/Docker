@@ -21,7 +21,7 @@ dockerhub
 - docker run -p 27017:27017 -d  ... --network mongo-network -e --name mongod-db mongo
 - docker run -d -p 8081:8081 -e ..... --net mongo-network --name mongo-express  mongo-express
 - docker logs -f
-#Docker Compose
+# Docker Compose
 -> create a file name.yaml
 
 version: '3' 
@@ -58,17 +58,18 @@ ENTRYPOINT 	(wrapper script does at runtime not overiden)
 - docker build -t myapp:1.0 . 
 - docker run myapp:1.0
 
-#Docker Registry
+# Docker Registry
 - ECR (each image has one image , but with different tags)
-- docker login  
+- docker login ip:port
 - docker tag name:tag aw..../my-app:1.0
 - docker push registryDomain/imageName:tags
+- cat ~/.docker/config.json (contains all tokens for login auth)
+- /etc/docker/daemon.json (for adding insecure resgistories)
 
-#Docker Volumes
+# Docker Volumes
 - docker run -v hostdir:containerdir  (host volume)
-- docker run -v path 		(anonymous volume) --> /var/lib/docker/Volumes
+- docker run -v path 		(anonymous volume) --> /var/lib/docker/Volumes 
 - docker run -v name:path (datapath)	(named-volumes) (production grade)
 - docker volume ls
    
 
-cat ~/.docker/config.json
