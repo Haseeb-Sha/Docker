@@ -71,5 +71,27 @@ ENTRYPOINT 	(wrapper script does at runtime not overiden)
 - docker run -v path 		(anonymous volume) --> /var/lib/docker/Volumes 
 - docker run -v name:path (datapath)	(named-volumes) (production grade)
 - docker volume ls
+- docker inspect volume_typess
+
+# best docker practice
+- use official image (like node instead of unbuntu)
+- use FROM node:20.0.2 (use versions)
+- don't use full blown os images ( like ubuntu because of unecessary packages and security issues e.g alpine)
+- optimize image layer caching ( docker history myapp:1.0)
+- create .dockerignore file and remove necessary files
+- create build stage and runtime stage ( use multi-stage built)
+   # Build Stage
+   FROM maven AS build
+   WORKDIR /app
+   COPY myapp /app
+   RUN mvn package
+   # Run stage
+   FROM tomcat
+   COPY --from=build /app/target/file.war /ur/local/wa...
+- less layering and improved caching
+- use dedicate user and grou for image (RUN and USER)
+- docker scout cves (image name) scanning images
+   
+   
    
 
