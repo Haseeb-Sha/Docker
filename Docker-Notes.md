@@ -54,6 +54,7 @@ WORKDIR			(set defualt home dir)
 CMD 			( can be overidden via cmd line args)
 RUN
 ENTRYPOINT 	(wrapper script does at runtime not overiden)
+EXPOSE
 
 - docker build -t myapp:1.0 . 
 - docker run myapp:1.0
